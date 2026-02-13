@@ -1,0 +1,135 @@
+<%- include('partials/head', { pageTitle: 'Προϊόντα - GP Med', metaDesc: 'Ακουστικά βαρηκοΐας, ωτοασπίδες, αναλώσιμα και περιφερειακά' }) %>
+<%- include('partials/navbar') %>
+
+<!-- Hero -->
+<section class="products-hero">
+  <div class="container">
+    <span class="section-label">Προϊόντα</span>
+    <h1>Λύσεις ακοής για κάθε ανάγκη</h1>
+    <p class="section-subtitle" style="margin-top: 16px;">
+      Πλήρης γκάμα ακουστικών βαρηκοΐας, ωτοασπίδων, αναλωσίμων και αξεσουάρ
+      από τα πιο αξιόπιστα brands παγκοσμίως. Όλα τα προϊόντα συνοδεύονται
+      από 2ετή εγγύηση και δωρεάν ελέγχους εφ' όρου ζωής.
+    </p>
+  </div>
+</section>
+
+<!-- Hearing Aids -->
+<section class="section">
+  <div class="container">
+    <div class="product-category">
+      <span class="section-label">Ακουστικά Βαρηκοΐας</span>
+      <h2 class="section-title">Τεχνολογία αιχμής για καθαρό ήχο</h2>
+      <p class="section-subtitle">Διαθέσιμα από τις Puretone (Αγγλία), NuEar (ΗΠΑ) και Coselgi (Ιταλία).</p>
+
+      <div class="products-grid">
+        <% hearingAids.forEach(p => { %>
+        <div class="product-card fade-in">
+          <div class="product-card-image">
+            <% if (p.slug === 'ric') { %>
+            <span class="product-icon">&#128266;</span>
+            <% } else if (p.slug === 'bte') { %>
+            <span class="product-icon">&#127911;</span>
+            <% } else { %>
+            <span class="product-icon">&#128065;</span>
+            <% } %>
+          </div>
+          <div class="product-card-body">
+            <% if (p.brand) { %><div class="brand"><%= p.brand %></div><% } %>
+            <h3><%= p.name %></h3>
+            <p><%= p.description %></p>
+            <div class="product-features">
+              <% if (p.features) { p.features.split('|').forEach(f => { %>
+              <span class="tag"><%= f %></span>
+              <% }) } %>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Ear Protection -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="product-category">
+      <span class="section-label">Προστασία Ακοής</span>
+      <h2 class="section-title">Ωτοασπίδες κατά παραγγελία</h2>
+      <p class="section-subtitle">Κατασκευάζονται στο 3D Printing Lab μας για τέλεια εφαρμογή.</p>
+
+      <div class="products-grid">
+        <% earProtection.forEach(p => { %>
+        <div class="product-card fade-in">
+          <div class="product-card-image">
+            <% if (p.slug === 'swimming-plugs') { %>
+            <span class="product-icon">&#127946;</span>
+            <% } else { %>
+            <span class="product-icon">&#128564;</span>
+            <% } %>
+          </div>
+          <div class="product-card-body">
+            <h3><%= p.name %></h3>
+            <p><%= p.description %></p>
+            <div class="product-features">
+              <% if (p.features) { p.features.split('|').forEach(f => { %>
+              <span class="tag"><%= f %></span>
+              <% }) } %>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Consumables & Accessories -->
+<section class="section">
+  <div class="container">
+    <div class="about-grid">
+      <% consumables.forEach(p => { %>
+      <div class="fade-in">
+        <span class="section-label">Αναλώσιμα</span>
+        <h2 class="section-title"><%= p.name %></h2>
+        <p style="color: var(--gray-600); line-height: 1.8; margin-bottom: 20px;"><%= p.description %></p>
+        <div class="product-features">
+          <% if (p.features) { p.features.split('|').forEach(f => { %>
+          <span class="tag"><%= f %></span>
+          <% }) } %>
+        </div>
+        <a href="/contact" class="btn btn-primary" style="margin-top: 24px;">Ρωτήστε μας</a>
+      </div>
+      <% }) %>
+
+      <% accessories.forEach(p => { %>
+      <div class="fade-in">
+        <span class="section-label">Περιφερειακά</span>
+        <h2 class="section-title"><%= p.name %></h2>
+        <p style="color: var(--gray-600); line-height: 1.8; margin-bottom: 20px;"><%= p.description %></p>
+        <div class="product-features">
+          <% if (p.features) { p.features.split('|').forEach(f => { %>
+          <span class="tag"><%= f %></span>
+          <% }) } %>
+        </div>
+        <a href="/contact" class="btn btn-primary" style="margin-top: 24px;">Ρωτήστε μας</a>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>Δωρεάν δοκιμή ακουστικών</h2>
+    <p>Δοκιμάστε τα προϊόντα μας δωρεάν πριν αποφασίσετε. Χωρίς δέσμευση.</p>
+    <div class="cta-buttons">
+      <a href="/contact" class="btn btn-accent btn-lg">Κλείστε Ραντεβού</a>
+      <a href="/services" class="btn btn-white btn-lg">Υπηρεσίες</a>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

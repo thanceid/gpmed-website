@@ -1,0 +1,138 @@
+<%- include('partials/head', { pageTitle: 'GP Med - Ηλεκτρονικό Κέντρο Ακοής', metaDesc: 'Εισαγωγή, εφαρμογή, επισκευή και συντήρηση ακουστικών βαρηκοΐας από το 1984' }) %>
+<%- include('partials/navbar') %>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Από το 1984 στην υπηρεσία σας
+        </div>
+        <h1>Βελτιώστε την ακοή σας, βελτιώστε τη ζωή σας</h1>
+        <p>Εξειδικευμένες λύσεις ακουστικών βαρηκοΐας με τεχνολογία αιχμής. Πανελλαδική κάλυψη με δίκτυο <%= storeCount %>+ σημείων εξυπηρέτησης.</p>
+        <div class="hero-buttons">
+          <a href="/products" class="btn btn-accent btn-lg">Δείτε τα Προϊόντα μας</a>
+          <a href="/contact" class="btn btn-white btn-lg">Κλείστε Ραντεβού</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <span class="number">40+</span>
+              <span class="label">Χρόνια Εμπειρίας</span>
+            </div>
+            <div class="hero-stat">
+              <span class="number"><%= storeCount %>+</span>
+              <span class="label">Σημεία Πανελλαδικά</span>
+            </div>
+            <div class="hero-stat-divider"></div>
+            <div class="hero-stat">
+              <span class="number">15</span>
+              <span class="label">Εξειδικευμένοι Συνεργάτες</span>
+            </div>
+            <div class="hero-stat">
+              <span class="number">7</span>
+              <span class="label">Διεθνείς Συνεργασίες</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services Overview -->
+<section class="section">
+  <div class="container text-center">
+    <span class="section-label">Υπηρεσίες</span>
+    <h2 class="section-title">Ολοκληρωμένη φροντίδα ακοής</h2>
+    <p class="section-subtitle mx-auto">Από τη διάγνωση και την εφαρμογή μέχρι τη συντήρηση και τις επισκευές, σας συνοδεύουμε σε κάθε βήμα.</p>
+
+    <div class="services-grid">
+      <% services.forEach(s => { %>
+      <a href="/services" class="service-card fade-in">
+        <div class="icon-wrap">
+          <% if (s.icon === 'print') { %>&#9881;<% } %>
+          <% if (s.icon === 'tools') { %>&#9874;<% } %>
+          <% if (s.icon === 'wrench') { %>&#128295;<% } %>
+          <% if (s.icon === 'home') { %>&#127968;<% } %>
+          <% if (s.icon === 'gift') { %>&#127873;<% } %>
+        </div>
+        <h4><%= s.name %></h4>
+        <p><%= s.description.substring(0, 80) %>...</p>
+      </a>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- Products Highlight -->
+<section class="section section-alt">
+  <div class="container">
+    <span class="section-label">Ακουστικά Βαρηκοΐας</span>
+    <h2 class="section-title">Τεχνολογία που ακούγεται</h2>
+    <p class="section-subtitle">Ευρεία γκάμα ακουστικών βαρηκοΐας για κάθε ανάγκη, από τα πιο αξιόπιστα brands παγκοσμίως.</p>
+
+    <div class="products-grid">
+      <% products.forEach(p => { %>
+      <div class="product-card fade-in">
+        <div class="product-card-image">
+          <% if (p.slug === 'ric') { %>
+          <span class="product-icon">&#128266;</span>
+          <% } else if (p.slug === 'bte') { %>
+          <span class="product-icon">&#127911;</span>
+          <% } else { %>
+          <span class="product-icon">&#128065;</span>
+          <% } %>
+        </div>
+        <div class="product-card-body">
+          <% if (p.brand) { %><div class="brand"><%= p.brand %></div><% } %>
+          <h3><%= p.name %></h3>
+          <p><%= p.description.substring(0, 120) %>...</p>
+          <div class="product-features">
+            <% if (p.features) { p.features.split('|').slice(0, 3).forEach(f => { %>
+            <span class="tag"><%= f %></span>
+            <% }) } %>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+
+    <div class="text-center" style="margin-top: 40px;">
+      <a href="/products" class="btn btn-primary">Δείτε όλα τα Προϊόντα</a>
+    </div>
+  </div>
+</section>
+
+<!-- Partners -->
+<section class="partners-bar">
+  <div class="container text-center">
+    <span class="section-label">Συνεργαζόμαστε με</span>
+    <div class="partners-logos" style="margin-top: 24px;">
+      <% partners.forEach(p => { %>
+      <div class="partner-logo">
+        <%= p.name %>
+        <span class="country"><%= p.country %></span>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>Δωρεάν δοκιμή ακουστικών</h2>
+    <p>Δοκιμάστε ακουστικά βαρηκοΐας δωρεάν, χωρίς δέσμευση. Εξατομικευμένη επιλογή με βάση τις ανάγκες σας.</p>
+    <div class="cta-buttons">
+      <a href="/contact" class="btn btn-accent btn-lg">Κλείστε Ραντεβού</a>
+      <a href="/services" class="btn btn-white btn-lg">Μάθετε Περισσότερα</a>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

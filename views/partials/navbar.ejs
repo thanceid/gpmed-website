@@ -1,0 +1,26 @@
+<nav class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href="/" class="nav-logo">
+      <div class="logo-icon">GP</div>
+      <div>
+        GP Med
+        <span class="logo-sub">Ηλεκτρονικό Κέντρο Ακοής</span>
+      </div>
+    </a>
+
+    <div class="nav-links" id="navLinks">
+      <a href="/" class="<%= currentPath === '/' ? 'active' : '' %>">Αρχική</a>
+      <a href="/about" class="<%= currentPath === '/about' ? 'active' : '' %>">Σχετικά</a>
+      <a href="/products" class="<%= currentPath === '/products' ? 'active' : '' %>">Προϊόντα</a>
+      <a href="/services" class="<%= currentPath === '/services' ? 'active' : '' %>">Υπηρεσίες</a>
+      <a href="/contact" class="<%= currentPath === '/contact' ? 'active' : '' %>">Επικοινωνία</a>
+      <a href="/contact" class="btn btn-accent btn-sm nav-cta">Κλείστε Ραντεβού</a>
+    </div>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>

@@ -1,0 +1,81 @@
+<%- include('partials/head', { pageTitle: 'Υπηρεσίες - GP Med', metaDesc: '3D Printing Lab, συντήρηση, service, επισκέψεις στο σπίτι' }) %>
+<%- include('partials/navbar') %>
+
+<!-- Hero -->
+<section class="services-hero">
+  <div class="container">
+    <span class="section-label">Υπηρεσίες</span>
+    <h1>Ολοκληρωμένη φροντίδα ακοής</h1>
+    <p class="section-subtitle" style="margin-top: 16px;">
+      Από τη διάγνωση και την εφαρμογή μέχρι τη συντήρηση και τις επισκευές.
+      Σας συνοδεύουμε σε κάθε βήμα με εξειδικευμένο προσωπικό και σύγχρονο εξοπλισμό.
+    </p>
+  </div>
+</section>
+
+<!-- Services Detail -->
+<section class="section">
+  <div class="container">
+    <% services.forEach((s, i) => { %>
+    <div class="service-detail fade-in">
+      <div>
+        <span class="service-number"><%= i + 1 %></span>
+        <h3><%= s.name %></h3>
+        <p><%= s.description %></p>
+        <a href="/contact" class="btn btn-primary btn-sm">Κλείστε Ραντεβού</a>
+      </div>
+      <div class="service-image-placeholder">
+        <% if (s.icon === 'print') { %>&#9881;<% } %>
+        <% if (s.icon === 'tools') { %>&#9874;<% } %>
+        <% if (s.icon === 'wrench') { %>&#128295;<% } %>
+        <% if (s.icon === 'home') { %>&#127968;<% } %>
+        <% if (s.icon === 'gift') { %>&#127873;<% } %>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+</section>
+
+<!-- 3D Printing Process -->
+<section class="section section-alt">
+  <div class="container text-center">
+    <span class="section-label">3D Printing Lab</span>
+    <h2 class="section-title">Η διαδικασία 3D εκτύπωσης</h2>
+    <p class="section-subtitle mx-auto" style="margin-bottom: 48px;">
+      Από το 2017, το εργαστήριο 3D εκτύπωσης της GP Med είναι το πρώτο στην ηπειρωτική Ελλάδα
+      για ακοολογικά προϊόντα.
+    </p>
+
+    <div class="services-grid" style="max-width: 900px; margin: 0 auto; grid-template-columns: repeat(3, 1fr);">
+      <div class="service-card fade-in">
+        <div class="icon-wrap" style="background: var(--accent);">1</div>
+        <h4>Σάρωση</h4>
+        <p>Τα αποτυπώματα του ακουστικού πόρου σαρώνονται με τεχνολογία laser.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="icon-wrap" style="background: var(--primary);">2</div>
+        <h4>Ψηφιακός Σχεδιασμός</h4>
+        <p>Επεξεργασία στον υπολογιστή και αποθήκευση σε κεντρική βάση δεδομένων.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="icon-wrap" style="background: var(--primary-dark);">3</div>
+        <h4>3D Εκτύπωση</h4>
+        <p>Στρώση επί στρώσης ακρυλικής ρητίνης φωτοπολυμεριζόμενης για το τελικό προϊόν.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>Χρειάζεστε κάποια υπηρεσία;</h2>
+    <p>Επικοινωνήστε μαζί μας ή επισκεφθείτε ένα από τα σημεία μας πανελλαδικά.</p>
+    <div class="cta-buttons">
+      <a href="/contact" class="btn btn-accent btn-lg">Επικοινωνία</a>
+      <a href="/products" class="btn btn-white btn-lg">Προϊόντα</a>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

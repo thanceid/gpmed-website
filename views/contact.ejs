@@ -1,0 +1,178 @@
+<%- include('partials/head', { pageTitle: 'Επικοινωνία - GP Med', metaDesc: 'Επικοινωνήστε μαζί μας - Πειραιώς 6, Ομόνοια, Αθήνα' }) %>
+<%- include('partials/navbar') %>
+
+<!-- Hero -->
+<section class="contact-hero">
+  <div class="container">
+    <span class="section-label">Επικοινωνία</span>
+    <h1>Είμαστε εδώ για εσάς</h1>
+    <p class="section-subtitle" style="margin-top: 16px;">
+      Επικοινωνήστε μαζί μας για οποιαδήποτε απορία ή κλείστε ραντεβού
+      στο πλησιέστερο σημείο εξυπηρέτησης.
+    </p>
+  </div>
+</section>
+
+<!-- Contact Form + Info -->
+<section class="section">
+  <div class="container">
+    <div class="contact-grid">
+      <!-- Form -->
+      <div class="contact-form">
+        <h3 style="margin-bottom: 24px;">Στείλτε μας μήνυμα</h3>
+
+        <% if (messageSent) { %>
+        <div class="success-msg">
+          Το μήνυμά σας στάλθηκε επιτυχώς! Θα επικοινωνήσουμε σύντομα μαζί σας.
+        </div>
+        <% } %>
+
+        <form method="POST" action="/contact">
+          <div class="form-group">
+            <label for="name">Ονοματεπώνυμο</label>
+            <input type="text" id="name" name="name" required placeholder="π.χ. Γιάννης Παπαδόπουλος">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="π.χ. example@email.com">
+          </div>
+          <div class="form-group">
+            <label for="phone">Τηλέφωνο</label>
+            <input type="tel" id="phone" name="phone" placeholder="π.χ. 210 1234567">
+          </div>
+          <div class="form-group">
+            <label for="subject">Θέμα</label>
+            <select id="subject" name="subject">
+              <option value="general">Γενική Ερώτηση</option>
+              <option value="appointment">Κλείσιμο Ραντεβού</option>
+              <option value="products">Πληροφορίες Προϊόντων</option>
+              <option value="service">Συντήρηση / Επισκευή</option>
+              <option value="insurance">Ασφαλιστικά Ταμεία</option>
+              <option value="home-visit">Επίσκεψη στο Σπίτι</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Μήνυμα</label>
+            <textarea id="message" name="message" required placeholder="Γράψτε το μήνυμά σας εδώ..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Αποστολή</button>
+        </form>
+      </div>
+
+      <!-- Info cards -->
+      <div class="contact-info-cards">
+        <div class="contact-info-card">
+          <div class="icon-wrap">&#128205;</div>
+          <div>
+            <h4>Κεντρικά Γραφεία</h4>
+            <p>Πειραιώς 6, 4ος όροφος<br>104 31 Ομόνοια, Αθήνα</p>
+          </div>
+        </div>
+
+        <div class="contact-info-card">
+          <div class="icon-wrap" style="background: var(--accent);">&#128222;</div>
+          <div>
+            <h4>Τηλέφωνα</h4>
+            <p>
+              <a href="tel:2105224105" style="color: var(--primary); font-weight: 600;">210 5224105</a><br>
+              <a href="tel:2105224106" style="color: var(--primary); font-weight: 600;">210 5224106</a><br>
+              Fax: 210 5232946
+            </p>
+          </div>
+        </div>
+
+        <div class="contact-info-card">
+          <div class="icon-wrap" style="background: #e8a317;">&#128231;</div>
+          <div>
+            <h4>Email</h4>
+            <p><a href="mailto:info@gazipappas.gr" style="color: var(--primary); font-weight: 600;">info@gazipappas.gr</a></p>
+          </div>
+        </div>
+
+        <div class="contact-info-card">
+          <div class="icon-wrap" style="background: #8b5cf6;">&#128338;</div>
+          <div>
+            <h4>Ωράριο Λειτουργίας</h4>
+            <p>
+              Δευτέρα, Τετάρτη, Πέμπτη: 8:30 - 16:00<br>
+              Τρίτη: 8:30 - 18:00<br>
+              Παρασκευή: 8:30 - 15:00
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stores -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="stores-section">
+      <span class="section-label">Δίκτυο Καταστημάτων</span>
+      <h2 class="section-title">Κεντρικά Σημεία</h2>
+
+      <div class="stores-grid">
+        <% centralStores.forEach(s => { %>
+        <div class="store-card central fade-in">
+          <h4><%= s.city %></h4>
+          <p class="address"><%= s.address %></p>
+          <p class="phone"><%= s.phone %></p>
+        </div>
+        <% }) %>
+      </div>
+
+      <h3 style="margin-top: 48px; margin-bottom: 8px;">Δίκτυο Συνεργατών</h3>
+      <p class="section-subtitle" style="margin-bottom: 24px;">Εξουσιοδοτημένοι αντιπρόσωποι σε ολόκληρη την Ελλάδα</p>
+
+      <div class="stores-grid">
+        <% partnerStores.forEach(s => { %>
+        <div class="store-card fade-in">
+          <h4><%= s.city %></h4>
+          <p class="address"><%= s.address %></p>
+          <p class="phone"><%= s.phone %></p>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Insurance -->
+<section class="section">
+  <div class="container">
+    <div class="insurance-section">
+      <span class="section-label">Ασφαλιστικά Ταμεία</span>
+      <h2 class="section-title">Συμβεβλημένοι με όλα τα ταμεία</h2>
+      <p class="section-subtitle" style="margin-bottom: 24px;">
+        Αναλαμβάνουμε τη διεκπεραίωση των δικαιολογητικών. Πληρώνετε μόνο τη συμμετοχή σας.
+      </p>
+
+      <div class="insurance-grid">
+        <% funds.forEach(f => { %>
+        <div class="insurance-card fade-in">
+          <h4><%= f.name %></h4>
+          <div class="coverage"><%= f.coverage %></div>
+          <% if (f.details) { %>
+          <p><%= f.details %></p>
+          <% } %>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>Κλείστε δωρεάν ραντεβού</h2>
+    <p>Καλέστε μας στο 210 5224105 ή στείλτε μας μήνυμα.</p>
+    <div class="cta-buttons">
+      <a href="tel:2105224105" class="btn btn-accent btn-lg">Καλέστε Τώρα</a>
+      <a href="/products" class="btn btn-white btn-lg">Δείτε Προϊόντα</a>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

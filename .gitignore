@@ -1,0 +1,5 @@
+node_modules/
+db/gpmed.db
+db/gpmed.db-wal
+db/gpmed.db-shm
+.env
