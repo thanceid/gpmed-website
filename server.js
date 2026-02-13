@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const db = require('./db');
+const data = require('./db/data');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -25,47 +25,47 @@ app.use((req, res, next) => {
 
 // Home
 app.get('/', (req, res) => {
-  const products = db.prepare('SELECT * FROM products WHERE category = ? ORDER BY sort_order').all('hearing-aids');
-  const services = db.prepare('SELECT * FROM services ORDER BY sort_order').all();
-  const partners = db.prepare('SELECT * FROM partners ORDER BY sort_order').all();
-  const storeCount = db.prepare('SELECT COUNT(*) as count FROM stores').get().count;
+  const products = data.getProductsByCategory('hearing-aids');
+  const services = data.getAllServices();
+  const partners = data.getAllPartners();
+  const storeCount = data.getStoreCount();
   res.render('home', { products, services, partners, storeCount });
 });
 
 // About
 app.get('/about', (req, res) => {
-  const partners = db.prepare('SELECT * FROM partners ORDER BY sort_order').all();
+  const partners = data.getAllPartners();
   res.render('about', { partners });
 });
 
 // Products
 app.get('/products', (req, res) => {
-  const hearingAids = db.prepare('SELECT * FROM products WHERE category = ? ORDER BY sort_order').all('hearing-aids');
-  const earProtection = db.prepare('SELECT * FROM products WHERE category = ? ORDER BY sort_order').all('ear-protection');
-  const consumables = db.prepare('SELECT * FROM products WHERE category = ? ORDER BY sort_order').all('consumables');
-  const accessories = db.prepare('SELECT * FROM products WHERE category = ? ORDER BY sort_order').all('accessories');
+  const hearingAids = data.getProductsByCategory('hearing-aids');
+  const earProtection = data.getProductsByCategory('ear-protection');
+  const consumables = data.getProductsByCategory('consumables');
+  const accessories = data.getProductsByCategory('accessories');
   res.render('products', { hearingAids, earProtection, consumables, accessories });
 });
 
 // Services
 app.get('/services', (req, res) => {
-  const services = db.prepare('SELECT * FROM services ORDER BY sort_order').all();
+  const services = data.getAllServices();
   res.render('services', { services });
 });
 
 // Contact
 app.get('/contact', (req, res) => {
-  const centralStores = db.prepare('SELECT * FROM stores WHERE is_central = 1 ORDER BY sort_order').all();
-  const partnerStores = db.prepare('SELECT * FROM stores WHERE is_central = 0 ORDER BY sort_order').all();
-  const funds = db.prepare('SELECT * FROM insurance_funds ORDER BY sort_order').all();
+  const centralStores = data.getCentralStores();
+  const partnerStores = data.getPartnerStores();
+  const funds = data.getAllFunds();
   res.render('contact', { centralStores, partnerStores, funds, messageSent: false });
 });
 
 // Contact form submission
 app.post('/contact', (req, res) => {
-  const centralStores = db.prepare('SELECT * FROM stores WHERE is_central = 1 ORDER BY sort_order').all();
-  const partnerStores = db.prepare('SELECT * FROM stores WHERE is_central = 0 ORDER BY sort_order').all();
-  const funds = db.prepare('SELECT * FROM insurance_funds ORDER BY sort_order').all();
+  const centralStores = data.getCentralStores();
+  const partnerStores = data.getPartnerStores();
+  const funds = data.getAllFunds();
   res.render('contact', { centralStores, partnerStores, funds, messageSent: true });
 });
 
@@ -74,6 +74,12 @@ app.use((req, res) => {
   res.status(404).render('404');
 });
 
-app.listen(PORT, () => {
-  console.log(`GP Med server running at http://localhost:${PORT}`);
-});
+// Local development
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`GP Med server running at http://localhost:${PORT}`);
+  });
+}
+
+// Export for Vercel serverless
+module.exports = app;
