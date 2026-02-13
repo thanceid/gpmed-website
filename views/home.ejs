@@ -1,7 +1,7 @@
-<%- include('partials/head', { pageTitle: 'GP Med - Ηλεκτρονικό Κέντρο Ακοής', metaDesc: 'Εισαγωγή, εφαρμογή, επισκευή και συντήρηση ακουστικών βαρηκοΐας από το 1984' }) %>
+<%- include('partials/head', { pageTitle: 'GP Med - Ηλεκτρονικό Κέντρο Ακοής', metaDesc: 'Ανακαλύψτε ξανά τον κόσμο του ήχου. Εξειδικευμένες λύσεις ακουστικών βαρηκοΐας από το 1984.' }) %>
 <%- include('partials/navbar') %>
 
-<!-- Hero -->
+<!-- Hero — Emotion First -->
 <section class="hero">
   <div class="container">
     <div class="hero-grid">
@@ -10,33 +10,19 @@
           <span class="dot"></span>
           Από το 1984 στην υπηρεσία σας
         </div>
-        <h1>Βελτιώστε την ακοή σας, βελτιώστε τη ζωή σας</h1>
-        <p>Εξειδικευμένες λύσεις ακουστικών βαρηκοΐας με τεχνολογία αιχμής. Πανελλαδική κάλυψη με δίκτυο <%= storeCount %>+ σημείων εξυπηρέτησης.</p>
+        <h1>Ανακαλύψτε ξανά τον κόσμο του ήχου</h1>
+        <p>Κάθε συζήτηση, κάθε μελωδία, κάθε στιγμή έχει σημασία. Σας βοηθάμε να τις ζήσετε ξανά με καθαρότητα και αυτοπεποίθηση.</p>
         <div class="hero-buttons">
-          <a href="/products" class="btn btn-accent btn-lg">Δείτε τα Προϊόντα μας</a>
-          <a href="/contact" class="btn btn-white btn-lg">Κλείστε Ραντεβού</a>
+          <a href="#quiz" class="btn btn-accent btn-lg">Ελέγξτε την Ακοή σας</a>
+          <a href="/contact" class="btn btn-white btn-lg">Κλείστε Δωρεάν Ραντεβού</a>
         </div>
       </div>
       <div class="hero-visual">
-        <div class="hero-card">
-          <div class="hero-stats">
-            <div class="hero-stat">
-              <span class="number">40+</span>
-              <span class="label">Χρόνια Εμπειρίας</span>
-            </div>
-            <div class="hero-stat">
-              <span class="number"><%= storeCount %>+</span>
-              <span class="label">Σημεία Πανελλαδικά</span>
-            </div>
-            <div class="hero-stat-divider"></div>
-            <div class="hero-stat">
-              <span class="number">15</span>
-              <span class="label">Εξειδικευμένοι Συνεργάτες</span>
-            </div>
-            <div class="hero-stat">
-              <span class="number">7</span>
-              <span class="label">Διεθνείς Συνεργασίες</span>
-            </div>
+        <div class="hero-feature-card">
+          <img src="/images/products/ric.jpg" alt="Ακουστικό βαρηκοΐας RIC" class="hero-product-img">
+          <div class="hero-feature-text">
+            <span class="hero-feature-label">Αόρατη Τεχνολογία</span>
+            <span class="hero-feature-desc">Σχεδιασμένα για να μην τα βλέπει κανείς</span>
           </div>
         </div>
       </div>
@@ -44,37 +30,139 @@
   </div>
 </section>
 
-<!-- Services Overview -->
-<section class="section">
-  <div class="container text-center">
-    <span class="section-label">Υπηρεσίες</span>
-    <h2 class="section-title">Ολοκληρωμένη φροντίδα ακοής</h2>
-    <p class="section-subtitle mx-auto">Από τη διάγνωση και την εφαρμογή μέχρι τη συντήρηση και τις επισκευές, σας συνοδεύουμε σε κάθε βήμα.</p>
+<!-- Trust Bar — Compact Stats Strip -->
+<section class="trust-bar">
+  <div class="container">
+    <div class="trust-items">
+      <div class="trust-item">
+        <span class="trust-number">40+</span>
+        <span class="trust-label">Χρόνια Εμπειρίας</span>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <span class="trust-number"><%= storeCount %>+</span>
+        <span class="trust-label">Σημεία Πανελλαδικά</span>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <span class="trust-number">ISO</span>
+        <span class="trust-label">Πιστοποιημένη Ποιότητα</span>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <span class="trust-number">2 Έτη</span>
+        <span class="trust-label">Εγγύηση Προϊόντων</span>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <span class="trust-number">7</span>
+        <span class="trust-label">Διεθνείς Συνεργασίες</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <div class="services-grid">
-      <% services.forEach(s => { %>
-      <a href="/services" class="service-card fade-in">
-        <div class="icon-wrap">
-          <% if (s.icon === 'print') { %>&#9881;<% } %>
-          <% if (s.icon === 'tools') { %>&#9874;<% } %>
-          <% if (s.icon === 'wrench') { %>&#128295;<% } %>
-          <% if (s.icon === 'home') { %>&#127968;<% } %>
-          <% if (s.icon === 'gift') { %>&#127873;<% } %>
+<!-- Mini Hearing Quiz -->
+<section class="section quiz-section" id="quiz">
+  <div class="container">
+    <div class="quiz-container">
+      <div class="quiz-header text-center">
+        <span class="section-label">Γρήγορος Έλεγχος Ακοής</span>
+        <h2 class="section-title">Μήπως αντιμετωπίζετε πρόβλημα ακοής;</h2>
+        <p class="section-subtitle mx-auto">Απαντήστε σε 3 ερωτήσεις — χρειάζεται λιγότερο από 1 λεπτό.</p>
+      </div>
+
+      <div class="quiz-body" id="quizBody">
+        <!-- Question 1 -->
+        <div class="quiz-step active" data-step="1">
+          <div class="quiz-question-number">1 / 3</div>
+          <h3 class="quiz-question">Δυσκολεύεστε να ακούσετε σε συζητήσεις με πολλά άτομα;</h3>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="2" onclick="quizAnswer(this)">Ναι, συχνά</button>
+            <button class="quiz-option" data-value="1" onclick="quizAnswer(this)">Μερικές φορές</button>
+            <button class="quiz-option" data-value="0" onclick="quizAnswer(this)">Σπάνια ή ποτέ</button>
+          </div>
         </div>
-        <h4><%= s.name %></h4>
-        <p><%= s.description.substring(0, 80) %>...</p>
-      </a>
-      <% }) %>
+
+        <!-- Question 2 -->
+        <div class="quiz-step" data-step="2">
+          <div class="quiz-question-number">2 / 3</div>
+          <h3 class="quiz-question">Ανεβάζετε συχνά την ένταση στην τηλεόραση ή το ραδιόφωνο;</h3>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="2" onclick="quizAnswer(this)">Ναι, συχνά</button>
+            <button class="quiz-option" data-value="1" onclick="quizAnswer(this)">Μερικές φορές</button>
+            <button class="quiz-option" data-value="0" onclick="quizAnswer(this)">Σπάνια ή ποτέ</button>
+          </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="quiz-step" data-step="3">
+          <div class="quiz-question-number">3 / 3</div>
+          <h3 class="quiz-question">Ζητάτε από τους γύρω σας να επαναλαμβάνουν αυτά που λένε;</h3>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="2" onclick="quizAnswer(this)">Ναι, συχνά</button>
+            <button class="quiz-option" data-value="1" onclick="quizAnswer(this)">Μερικές φορές</button>
+            <button class="quiz-option" data-value="0" onclick="quizAnswer(this)">Σπάνια ή ποτέ</button>
+          </div>
+        </div>
+
+        <!-- Result -->
+        <div class="quiz-step quiz-result" data-step="result">
+          <div class="quiz-result-icon" id="quizResultIcon"></div>
+          <h3 class="quiz-result-title" id="quizResultTitle"></h3>
+          <p class="quiz-result-text" id="quizResultText"></p>
+          <a href="/contact" class="btn btn-accent btn-lg" style="margin-top: 24px;">Κλείστε Δωρεάν Ραντεβού</a>
+          <button class="btn btn-outline btn-sm" style="margin-top: 12px;" onclick="resetQuiz()">Επανάληψη</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works — 3 Step Journey -->
+<section class="section section-alt">
+  <div class="container text-center">
+    <span class="section-label">Πώς Λειτουργεί</span>
+    <h2 class="section-title">3 απλά βήματα για καλύτερη ακοή</h2>
+    <p class="section-subtitle mx-auto">Η διαδικασία είναι εύκολη, γρήγορη και χωρίς δέσμευση.</p>
+
+    <div class="journey-steps">
+      <div class="journey-step fade-in">
+        <div class="journey-number">1</div>
+        <div class="journey-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2"/><path d="M24 14v10l7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Αξιολόγηση</h3>
+        <p>Δωρεάν έλεγχος ακοής στο κέντρο μας ή στο σπίτι σας. Εξατομικευμένη διάγνωση από ειδικό.</p>
+      </div>
+      <div class="journey-connector"></div>
+      <div class="journey-step fade-in">
+        <div class="journey-number">2</div>
+        <div class="journey-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="8" y="12" width="32" height="24" rx="4" stroke="currentColor" stroke-width="2"/><path d="M20 24h8M24 20v8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Δοκιμή</h3>
+        <p>Δοκιμάστε δωρεάν τα ακουστικά που ταιριάζουν στις ανάγκες σας. Χωρίς καμία υποχρέωση.</p>
+      </div>
+      <div class="journey-connector"></div>
+      <div class="journey-step fade-in">
+        <div class="journey-number">3</div>
+        <div class="journey-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4z" stroke="currentColor" stroke-width="2"/><path d="M16 24l6 6 10-12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Καλύτερη Ζωή</h3>
+        <p>Απολαύστε κάθε ήχο με καθαρότητα. Εφ' όρου ζωής υποστήριξη και δωρεάν ρυθμίσεις.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- Products Highlight -->
-<section class="section section-alt">
+<section class="section">
   <div class="container">
     <span class="section-label">Ακουστικά Βαρηκοΐας</span>
-    <h2 class="section-title">Τεχνολογία που ακούγεται</h2>
-    <p class="section-subtitle">Ευρεία γκάμα ακουστικών βαρηκοΐας για κάθε ανάγκη, από τα πιο αξιόπιστα brands παγκοσμίως.</p>
+    <h2 class="section-title">Αόρατη τεχνολογία, κρυστάλλινος ήχος</h2>
+    <p class="section-subtitle">Σχεδιασμένα για να μην τα βλέπει κανείς — αλλά να τα ακούτε εσείς.</p>
 
     <div class="products-grid">
       <% products.forEach(p => { %>
@@ -102,15 +190,105 @@
   </div>
 </section>
 
-<!-- Partners -->
+<!-- 3D Lab Spotlight -->
+<section class="lab-spotlight">
+  <div class="container">
+    <div class="lab-grid">
+      <div class="lab-images">
+        <img src="/images/services/3dlab.png" alt="3D Printing Lab GP Med" class="lab-img-main fade-in">
+        <div class="lab-img-row">
+          <img src="/images/services/3d-1.jpg" alt="3D σάρωση" class="lab-img-small fade-in">
+          <img src="/images/services/3d-3.jpg" alt="3D εκτύπωση" class="lab-img-small fade-in">
+          <img src="/images/services/3d-5.jpg" alt="3D προϊόν" class="lab-img-small fade-in">
+        </div>
+      </div>
+      <div class="lab-content">
+        <span class="section-label">Μοναδικό στην Ελλάδα</span>
+        <h2 class="section-title">Εργαστήριο 3D Εκτύπωσης</h2>
+        <p>Από το 2017, είμαστε το <strong>πρώτο εργαστήριο 3D εκτύπωσης</strong> ακοολογικών προϊόντων στην ηπειρωτική Ελλάδα. Κατασκευάζουμε εκμαγεία, κελύφη ακουστικών και ωτοασπίδες με ακρίβεια laser.</p>
+        <div class="lab-features">
+          <div class="lab-feature">
+            <span class="lab-feature-icon">&#9889;</span>
+            <span>Παράδοση σε λίγες ημέρες</span>
+          </div>
+          <div class="lab-feature">
+            <span class="lab-feature-icon">&#127919;</span>
+            <span>Ακρίβεια laser scanning</span>
+          </div>
+          <div class="lab-feature">
+            <span class="lab-feature-icon">&#128171;</span>
+            <span>Τέλεια εφαρμογή</span>
+          </div>
+        </div>
+        <a href="/services" class="btn btn-primary" style="margin-top: 24px;">Μάθετε Περισσότερα</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section section-alt">
+  <div class="container text-center">
+    <span class="section-label">Τι Λένε οι Πελάτες μας</span>
+    <h2 class="section-title">Ιστορίες που μας εμπνέουν</h2>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-in">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-text">"Μετά από χρόνια που απέφευγα τις παρέες γιατί δεν μπορούσα να ακολουθήσω τη συζήτηση, τώρα απολαμβάνω κάθε στιγμή. Η ομάδα της GP Med με βοήθησε να βρω ακριβώς αυτό που χρειαζόμουν."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">ΜΚ</div>
+          <div>
+            <strong>Μαρία Κ.</strong>
+            <span>Αθήνα</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card fade-in">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-text">"Η δωρεάν δοκιμή ήταν αυτό που με έπεισε. Δοκίμασα τα ακουστικά χωρίς δέσμευση και η διαφορά ήταν εκπληκτική. Εξαιρετική εξυπηρέτηση και μετά την αγορά."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">ΓΠ</div>
+          <div>
+            <strong>Γιώργος Π.</strong>
+            <span>Θεσσαλονίκη</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card fade-in">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-text">"Ήρθαν στο σπίτι μας για τη μητέρα μου. Επαγγελματισμός, υπομονή και ανθρωπιά. Η μητέρα μου ξαναβρήκε τη χαρά της επικοινωνίας στα 82 της χρόνια."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">ΕΔ</div>
+          <div>
+            <strong>Ελένη Δ.</strong>
+            <span>Πάτρα</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Partners — Real Logos -->
 <section class="partners-bar">
   <div class="container text-center">
-    <span class="section-label">Συνεργαζόμαστε με</span>
+    <span class="section-label">Εμπιστευόμαστε τους Καλύτερους</span>
     <div class="partners-logos" style="margin-top: 24px;">
       <% partners.forEach(p => { %>
-      <div class="partner-logo">
-        <%= p.name %>
-        <span class="country"><%= p.country %></span>
+      <div class="partner-logo-wrap">
+        <% if (['Puretone', 'Coselgi'].includes(p.name)) { %>
+        <img src="/images/logos/<%= p.name.toLowerCase() %>.png" alt="<%= p.name %>" class="partner-logo-img">
+        <% } else if (p.name === 'NuEar') { %>
+        <img src="/images/logos/nuear.jpg" alt="NuEar" class="partner-logo-img">
+        <% } else { %>
+        <div class="partner-logo">
+          <%= p.name %>
+          <span class="country"><%= p.country %></span>
+        </div>
+        <% } %>
       </div>
       <% }) %>
     </div>
@@ -120,11 +298,11 @@
 <!-- CTA -->
 <section class="cta-banner">
   <div class="container">
-    <h2>Δωρεάν δοκιμή ακουστικών</h2>
-    <p>Δοκιμάστε ακουστικά βαρηκοΐας δωρεάν, χωρίς δέσμευση. Εξατομικευμένη επιλογή με βάση τις ανάγκες σας.</p>
+    <h2>Κάντε το πρώτο βήμα σήμερα</h2>
+    <p>Δωρεάν αξιολόγηση ακοής, δωρεάν δοκιμή ακουστικών, χωρίς καμία δέσμευση. Είμαστε δίπλα σας.</p>
     <div class="cta-buttons">
-      <a href="/contact" class="btn btn-accent btn-lg">Κλείστε Ραντεβού</a>
-      <a href="/services" class="btn btn-white btn-lg">Μάθετε Περισσότερα</a>
+      <a href="/contact" class="btn btn-accent btn-lg">Κλείστε Δωρεάν Ραντεβού</a>
+      <a href="tel:2105224105" class="btn btn-white btn-lg">Καλέστε: 210 5224105</a>
     </div>
   </div>
 </section>
