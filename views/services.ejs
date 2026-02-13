@@ -25,11 +25,17 @@
         <a href="/contact" class="btn btn-primary btn-sm">Κλείστε Ραντεβού</a>
       </div>
       <div class="service-image-placeholder">
-        <% if (s.icon === 'print') { %>&#9881;<% } %>
-        <% if (s.icon === 'tools') { %>&#9874;<% } %>
-        <% if (s.icon === 'wrench') { %>&#128295;<% } %>
-        <% if (s.icon === 'home') { %>&#127968;<% } %>
-        <% if (s.icon === 'gift') { %>&#127873;<% } %>
+        <% if (s.icon === 'print') { %>
+        <img src="/images/services/3dlab.png" alt="<%= s.name %>" class="service-img">
+        <% } else if (s.icon === 'tools') { %>
+        <img src="/images/services/3d-3.jpg" alt="<%= s.name %>" class="service-img">
+        <% } else if (s.icon === 'wrench') { %>
+        <img src="/images/services/3d-4.jpg" alt="<%= s.name %>" class="service-img">
+        <% } else if (s.icon === 'home') { %>
+        <img src="/images/general/gpmeddiktyo.png" alt="<%= s.name %>" class="service-img">
+        <% } else { %>
+        <img src="/images/general/visitus.png" alt="<%= s.name %>" class="service-img">
+        <% } %>
       </div>
     </div>
     <% }) %>

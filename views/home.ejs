@@ -80,13 +80,7 @@
       <% products.forEach(p => { %>
       <div class="product-card fade-in">
         <div class="product-card-image">
-          <% if (p.slug === 'ric') { %>
-          <span class="product-icon">&#128266;</span>
-          <% } else if (p.slug === 'bte') { %>
-          <span class="product-icon">&#127911;</span>
-          <% } else { %>
-          <span class="product-icon">&#128065;</span>
-          <% } %>
+          <img src="/images/products/<%= p.slug %>.jpg" alt="<%= p.name %>" class="product-img">
         </div>
         <div class="product-card-body">
           <% if (p.brand) { %><div class="brand"><%= p.brand %></div><% } %>
